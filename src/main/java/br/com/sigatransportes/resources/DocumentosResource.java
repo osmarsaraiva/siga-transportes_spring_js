@@ -3,11 +3,15 @@ package br.com.sigatransportes.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sigatransportes.domain.Documentos;
+import br.com.sigatransportes.services.DocumentosService;
 
 
 //ctr+shif+o
@@ -15,17 +19,16 @@ import br.com.sigatransportes.domain.Documentos;
 @RequestMapping(value="/documentos")
 public class DocumentosResource {
 	
-	@GetMapping
-	public List<Documentos>listar() {
+	
+	@Autowired
+	private DocumentosService service;
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
-		Documentos doc = new Documentos(1, "Nota Fiscal");
-		Documentos doc2 = new Documentos(2, "Recibo");
+		Documentos obj = service.find(id);
 		
-		List<Documentos> lista = new ArrayList<>();
-		lista.add(doc);
-		lista.add(doc2);
-		
-		return lista;
+		return ResponseEntity.ok( ).body(obj);
 	}
 
 }
