@@ -23,6 +23,17 @@ public class Documentos implements Serializable{
 		
 	}
 
+	
+	
+
+	@Override
+	public String toString() {
+		return "Documentos [id=" + id + ", nome_doc=" + nome_doc + "]";
+	}
+
+
+
+
 
 	public Documentos(Integer id, String nome_doc) {
 		super();

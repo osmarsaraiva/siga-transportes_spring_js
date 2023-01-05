@@ -16,7 +16,7 @@ public class DocumentosService {
 
 	public Documentos find(Integer id) {
 		
-		Optional<Documentos> obj = repo.findById(id);
+		Optional<Documentos> obj = Optional.empty();
 		return obj.orElse(null);
 		
 	}
